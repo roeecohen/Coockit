@@ -7,13 +7,14 @@
 
   <ListView
       android:id="@+id/search_item_list"
-      android:layout_width="397dp"
-      android:layout_height="417dp"
+      android:layout_width="394dp"
+      android:layout_height="425dp"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.705"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/searchView"
-      app:layout_constraintVertical_bias="0.525" />
+      app:layout_constraintVertical_bias="0.077" />
 
   <SearchView
       android:id="@+id/searchView"
