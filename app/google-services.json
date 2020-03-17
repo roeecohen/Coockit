@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "166859509576",
+    "firebase_url": "https://coockit-78533.firebaseio.com",
+    "project_id": "coockit-78533",
+    "storage_bucket": "coockit-78533.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:166859509576:android:b860d580bb134bc33aed7d",
+        "android_client_info": {
+          "package_name": "com.example.coockit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "166859509576-i9t4d5abuc5hh77egoj3a0jktac22sk0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.coockit",
+            "certificate_hash": "c1374b476d3fcc1399b116f9174ea0ef84252653"
+          }
+        },
+        {
+          "client_id": "166859509576-53nlduei4f31uus569h948cmm95955r0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.coockit",
+            "certificate_hash": "a9f1e7c20b4ec66ec8c7c7ee89e106b1cccb31ad"
+          }
+        },
+        {
+          "client_id": "166859509576-ount3go1942k8rs5t403kfc1vkqaofnk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH4-DX7lD86XmQi8w8U5IrmEPFNwQwREI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "166859509576-ount3go1942k8rs5t403kfc1vkqaofnk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
