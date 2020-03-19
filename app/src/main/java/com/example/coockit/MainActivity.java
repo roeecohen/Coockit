@@ -27,9 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListner);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new HomeFragment()).commit();
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
     }
 
     @Override
@@ -87,11 +85,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void myRec(View view) {
         startActivity(new Intent(getApplicationContext(), ProfileRecipes.class));
-
     }
 
-
-
-
-
+    public void goToRecipe(View view) {
+        startActivity(new Intent(getApplicationContext(), HomeSingleRecipe.class));
+    }
 }

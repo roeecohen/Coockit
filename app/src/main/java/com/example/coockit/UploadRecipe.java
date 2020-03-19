@@ -124,7 +124,7 @@ public class UploadRecipe extends AppCompatActivity {
                             String userEmail = FirebaseUtils.getCurrentUserEmail();
                             if (userEmail!="") {
                                 Recipe recipe = new Recipe(recipeName.getText().toString().trim(), uri.toString().trim(), directions.getText().toString().trim(), ingerdients.getText().toString().trim(), difficulty.getText().toString().trim(), prep.getText().toString().trim(), userEmail);
-                                databaseRef.child(recipeName.getText().toString().trim()).setValue(recipe).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                databaseRef.child(recipe.getId()).setValue(recipe).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
                                         Toast.makeText(UploadRecipe.this,"Upload successful",Toast.LENGTH_SHORT).show();

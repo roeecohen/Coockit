@@ -23,7 +23,7 @@ public class ProfileRecipes extends AppCompatActivity {
     private DatabaseReference databaseRef;
     private Query query ;
     private RecyclerView recyclerView;
-    private FirebaseRecyclerAdapter<Recipe,RecipesViewHolder> adapter;
+    private FirebaseRecyclerAdapter<Recipe,RecipeViewHolder> adapter;
 
 
     @Override
@@ -41,46 +41,25 @@ public class ProfileRecipes extends AppCompatActivity {
         FirebaseRecyclerOptions<Recipe> options = new FirebaseRecyclerOptions.Builder<Recipe>()
                 .setQuery(query, Recipe.class).build();
 
-        adapter = new FirebaseRecyclerAdapter<Recipe,RecipesViewHolder>(options) {
+        adapter = new FirebaseRecyclerAdapter<Recipe,RecipeViewHolder>(options) {
             @NonNull
             @Override
-            public RecipesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public RecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_item,parent,false);
-                return new RecipesViewHolder(view);
+                return new RecipeViewHolder(view);
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull RecipesViewHolder holder, int position, @NonNull Recipe model) {
-                holder.recipeName.setText(model.getName());
-                holder.ingerdients.setText(model.getIngredients());
-                holder.directions.setText(model.getDirections());
-                holder.difficulty.setText(model.getDifficulty());
-                holder.prep.setText(model.getPreparationTime());
-                Picasso.get().load(model.getPicUrl()).into(holder.imgView);
-
+            protected void onBindViewHolder(@NonNull RecipeViewHolder holder, int position, @NonNull Recipe model) {
+                holder.getRecipeName().setText(model.getName());
+                holder.getIngerdients().setText(model.getIngredients());
+                holder.getDirections().setText(model.getDirections());
+                holder.getDifficulty().setText(model.getDifficulty());
+                holder.getPrep().setText(model.getPreparationTime());
+                Picasso.get().load(model.getPicUrl()).into(holder.getImgView());
             }
         };
         recyclerView.setAdapter(adapter);
-    }
-
-    private class RecipesViewHolder extends RecyclerView.ViewHolder {
-        private TextView recipeName;
-        private TextView ingerdients;
-        private TextView directions;
-        private TextView difficulty;
-        private TextView prep;
-        private ImageView imgView;
-
-        public RecipesViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            recipeName = (TextView)itemView.findViewById(R.id.rec_name);
-            ingerdients = (TextView)itemView.findViewById(R.id.rec_ingred);
-            directions = (TextView)itemView.findViewById(R.id.rec_dire);
-            difficulty = (TextView)itemView.findViewById(R.id.rec_diffi);
-            prep = (TextView)itemView.findViewById(R.id.rec_prep);
-            imgView = (ImageView)itemView.findViewById(R.id.rec_img);
-        }
     }
 
    @Override

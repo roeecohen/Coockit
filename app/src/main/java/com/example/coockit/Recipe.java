@@ -1,6 +1,9 @@
 package com.example.coockit;
+import java.util.UUID;
 
 public class Recipe {
+
+    private String id;
     private String name;
     private String picUrl;
     private String directions;
@@ -12,6 +15,7 @@ public class Recipe {
     public Recipe(){}
 
     public Recipe(String name, String picUrl, String directions, String ingredients, String difficulty, String preparationTime, String user) {
+        id = UUID.randomUUID().toString();
         this.name = name;
         this.picUrl = picUrl;
         this.directions = directions;
@@ -21,6 +25,13 @@ public class Recipe {
         this.user = user;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
