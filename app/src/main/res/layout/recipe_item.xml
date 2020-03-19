@@ -4,21 +4,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="367dp"
-        android:layout_height="663dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_margin="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/rec_name"
@@ -53,8 +54,8 @@
 
             <TextView
                 android:id="@+id/rec_ingred"
-                android:layout_width="348dp"
-                android:layout_height="110dp"
+                android:layout_width="324dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Ingredients text"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -64,8 +65,8 @@
 
             <TextView
                 android:id="@+id/rec_dire"
-                android:layout_width="345dp"
-                android:layout_height="143dp"
+                android:layout_width="324dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Directions text"
                 app:layout_constraintEnd_toEndOf="parent"

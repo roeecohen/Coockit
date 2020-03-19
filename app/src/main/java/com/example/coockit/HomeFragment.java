@@ -68,7 +68,6 @@ public class HomeFragment extends Fragment {
                     public void onClick(View v) {
                         Recipe recipe= (Recipe)adapter.getItem(position);
 
-                        Toast.makeText(getActivity(), "Recycle Click" , Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getContext(), HomeSingleRecipe.class);
                         intent.putExtra("rec_id", recipe.getId());
                         startActivity(intent);

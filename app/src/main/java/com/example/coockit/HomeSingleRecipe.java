@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,7 +36,9 @@ public class HomeSingleRecipe extends AppCompatActivity {
 
         recipeName = (TextView) findViewById(R.id.single_rec_name);
         ingerdients =(TextView)findViewById(R.id.single_rec_ingred);
+        ingerdients.setMovementMethod(new ScrollingMovementMethod());
         directions =findViewById(R.id.single_rec_dire);
+        directions.setMovementMethod(new ScrollingMovementMethod());
         difficulty =findViewById(R.id.single_rec_diffi);
         prep =findViewById(R.id.single_rec_prep);
         imgView = findViewById(R.id.single_rec_img);
