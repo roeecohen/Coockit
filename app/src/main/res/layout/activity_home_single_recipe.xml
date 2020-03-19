@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeSingleRecipe">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="367dp"
+        android:layout_height="663dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/single_rec_name"
+                android:layout_width="120dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="16dp"
+                android:text="Name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.036"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/single_rec_img"
+                android:layout_width="351dp"
+                android:layout_height="125dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/single_rec_name" />
+
+            <TextView
+                android:id="@+id/single_ingredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Ingredients"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/single_rec_img" />
+
+            <TextView
+                android:id="@+id/single_rec_ingred"
+                android:layout_width="348dp"
+                android:layout_height="110dp"
+                android:layout_marginTop="8dp"
+                android:text="Ingredients text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.473"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/single_ingredients" />
+
+            <TextView
+                android:id="@+id/single_rec_dire"
+                android:layout_width="345dp"
+                android:layout_height="143dp"
+                android:layout_marginTop="16dp"
+                android:text="Directions text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.545"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/single_dir_text" />
+
+            <TextView
+                android:id="@+id/single_dir_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Directions"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.039"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/single_rec_ingred" />
+
+            <TextView
+                android:id="@+id/single_rec_diffi"
+                android:layout_width="92dp"
+                android:layout_height="29dp"
+                android:layout_marginTop="40dp"
+                android:text="Difficulty"
+                app:layout_constraintBottom_toTopOf="@+id/single_rec_img"
+                app:layout_constraintStart_toEndOf="@+id/single_rec_name"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/single_rec_prep"
+                android:layout_width="85dp"
+                android:layout_height="30dp"
+                android:text="PrepTime"
+                app:layout_constraintBottom_toTopOf="@+id/single_rec_img"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/single_rec_diffi" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
