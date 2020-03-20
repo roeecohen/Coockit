@@ -1,17 +1,19 @@
-package com.example.coockit;
+package com.example.coockit.Profile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.coockit.Classes.Recipe;
+import com.example.coockit.FirebaseUtils;
+import com.example.coockit.R;
+import com.example.coockit.RecipeViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -23,7 +25,7 @@ public class ProfileRecipes extends AppCompatActivity {
     private DatabaseReference databaseRef;
     private Query query ;
     private RecyclerView recyclerView;
-    private FirebaseRecyclerAdapter<Recipe,RecipeViewHolder> adapter;
+    private FirebaseRecyclerAdapter<Recipe, RecipeViewHolder> adapter;
 
 
     @Override

@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
   <ListView
       android:id="@+id/search_item_list"
       android:layout_width="394dp"
@@ -14,20 +16,35 @@
       app:layout_constraintHorizontal_bias="0.705"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/searchView"
-      app:layout_constraintVertical_bias="0.077" />
+      app:layout_constraintVertical_bias="0.077" >
+
+  </ListView>
+
+  <Button
+      android:id="@+id/search_btn"
+      android:layout_width="73dp"
+      android:layout_height="43dp"
+      android:layout_marginTop="160dp"
+      android:background="@drawable/rounded_button"
+      android:text="@android:string/search_go"
+      android:textColor="#FFFFFF"
+      app:layout_constraintBottom_toTopOf="@+id/search_item_list"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.997"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.0" />
 
   <SearchView
       android:id="@+id/searchView"
-      android:layout_width="392dp"
+      android:layout_width="321dp"
       android:layout_height="46dp"
       android:iconifiedByDefault="false"
       android:queryHint="Search here"
-      android:searchHintIcon="@null"
-      android:searchIcon="@null"
       app:actionViewClass="android.support.v7.widget.SearchView"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.631"
+      app:layout_constraintHorizontal_bias="0.177"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintVertical_bias="0.229" />
@@ -56,6 +73,17 @@
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/search"
       app:layout_constraintVertical_bias="0.808" />
+
+    <TextView
+        android:id="@+id/text_view_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="result"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

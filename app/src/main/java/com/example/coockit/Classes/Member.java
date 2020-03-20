@@ -1,4 +1,4 @@
-package com.example.coockit;
+package com.example.coockit.Classes;
 
 public class Member {
     private String fullName;

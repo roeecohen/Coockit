@@ -1,4 +1,4 @@
-package com.example.coockit;
+package com.example.coockit.Home;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,6 +9,8 @@ import android.text.method.ScrollingMovementMethod;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.coockit.Classes.Recipe;
+import com.example.coockit.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,11 +39,11 @@ public class HomeSingleRecipe extends AppCompatActivity {
         recipeName = (TextView) findViewById(R.id.single_rec_name);
         ingerdients =(TextView)findViewById(R.id.single_rec_ingred);
         ingerdients.setMovementMethod(new ScrollingMovementMethod());
-        directions =findViewById(R.id.single_rec_dire);
+        directions =(TextView)findViewById(R.id.single_rec_dire);
         directions.setMovementMethod(new ScrollingMovementMethod());
-        difficulty =findViewById(R.id.single_rec_diffi);
-        prep =findViewById(R.id.single_rec_prep);
-        imgView = findViewById(R.id.single_rec_img);
+        difficulty =(TextView)findViewById(R.id.single_rec_diffi);
+        prep =(TextView)findViewById(R.id.single_rec_prep);
+        imgView = (ImageView)findViewById(R.id.single_rec_img);
 
         database= FirebaseDatabase.getInstance().getReference("Recipes");
 

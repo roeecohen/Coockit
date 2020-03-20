@@ -8,14 +8,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.SearchView;
 
+import com.example.coockit.Home.HomeFragment;
+import com.example.coockit.Home.HomeSingleRecipe;
+import com.example.coockit.Profile.ProfileFragment;
+import com.example.coockit.LoginRegister.Login;
+import com.example.coockit.Profile.ProfileRecipes;
+import com.example.coockit.Profile.UploadRecipe;
+import com.example.coockit.Search.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -78,8 +82,10 @@ public class MainActivity extends AppCompatActivity {
         finish();
 
     }
-    public void upload(View view) {
+    public void upload(View view) throws IOException, InterruptedException {
         startActivity(new Intent(getApplicationContext(), UploadRecipe.class));
+//        Intent browse = new Intent( Intent.ACTION_VIEW , Uri.parse( "http://www.nibbledish.com/people/Paula/recipes/blue-cheese-omelette" ) );
+//        startActivity( browse );
 
     }
 

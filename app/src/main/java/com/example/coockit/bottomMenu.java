@@ -2,6 +2,7 @@ package com.example.coockit;
 
 import android.os.Bundle;
 
+import com.example.coockit.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;

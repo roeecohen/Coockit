@@ -1,4 +1,4 @@
-package com.example.coockit;
+package com.example.coockit.Classes;
 import java.util.UUID;
 
 public class Recipe {
