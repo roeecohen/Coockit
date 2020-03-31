@@ -62,8 +62,6 @@ public class SearchResults extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         mQueue = Volley.newRequestQueue(this);
 
-        //jsonParse();
-
         jsonParse(new VolleyCallBack() {
 
             @Override

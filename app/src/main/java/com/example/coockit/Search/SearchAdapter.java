@@ -3,6 +3,7 @@ package com.example.coockit.Search;
 import android.content.Context;
 import android.content.Intent;
 
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +12,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.coockit.Classes.Recipe;
+import com.example.coockit.Home.HomeSingleRecipe;
 import com.example.coockit.R;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -22,10 +26,6 @@ import com.squareup.picasso.Picasso;
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {
 
     private Context mContext;
-
-    public interface VolleyCallBack {
-        void onSuccess();
-    }
 
     public SearchAdapter(Intent intent,Context context) {
         mContext = context;
@@ -40,12 +40,19 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SearchViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SearchViewHolder holder, final int position) {
         holder.title.setText((String)SearchResults.getmTitles().get(position));
         holder.url.setText((String)SearchResults.getmUrls().get(position));
         holder.ingredients.setText((String)SearchResults.getmIngredients().get(position));
         Picasso.get().load((String)SearchResults.getmPictures().get(position)).into(holder.img);
 
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browse = new Intent( Intent.ACTION_VIEW , Uri.parse((String)SearchResults.getmUrls().get(position)) );
+                mContext.startActivity( browse );
+            }
+        });
     }
 
     @Override
@@ -53,12 +60,12 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         return SearchResults.getmTitles().size();
     }
 
-
     public class SearchViewHolder extends RecyclerView.ViewHolder {
         private TextView title;
         private TextView url;
         private TextView ingredients;
         private ImageView img;
+        private CardView card;
 
         public SearchViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,6 +74,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             url = (TextView) itemView.findViewById(R.id.url);
             ingredients = (TextView) itemView.findViewById(R.id.ingredients);
             img = (ImageView) itemView.findViewById(R.id.img);
+            card= (CardView) itemView.findViewById(R.id.search_card);
         }
     }
 }

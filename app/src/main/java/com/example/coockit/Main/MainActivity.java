@@ -85,16 +85,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void upload(View view) throws IOException, InterruptedException {
         startActivity(new Intent(getApplicationContext(), UploadRecipe.class));
-//        Intent browse = new Intent( Intent.ACTION_VIEW , Uri.parse( "http://www.nibbledish.com/people/Paula/recipes/blue-cheese-omelette" ) );
-//        startActivity( browse );
 
     }
 
     public void myRec(View view) {
         startActivity(new Intent(getApplicationContext(), ProfileRecipes.class));
-    }
-
-    public void goToRecipe(View view) {
-        startActivity(new Intent(getApplicationContext(), HomeSingleRecipe.class));
     }
 }
