@@ -1,4 +1,4 @@
-package com.example.coockit;
+package com.example.coockit.Main;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,7 @@ import com.example.coockit.Profile.ProfileFragment;
 import com.example.coockit.LoginRegister.Login;
 import com.example.coockit.Profile.ProfileRecipes;
 import com.example.coockit.Profile.UploadRecipe;
+import com.example.coockit.R;
 import com.example.coockit.Search.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;

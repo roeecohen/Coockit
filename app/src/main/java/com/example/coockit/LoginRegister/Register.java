@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.example.coockit.MainActivity;
+import com.example.coockit.Main.MainActivity;
 import com.example.coockit.Classes.Member;
 import com.example.coockit.R;
 import com.google.android.gms.tasks.OnCompleteListener;

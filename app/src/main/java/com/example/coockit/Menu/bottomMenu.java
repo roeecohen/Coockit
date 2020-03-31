@@ -1,4 +1,4 @@
-package com.example.coockit;
+package com.example.coockit.Menu;
 
 import android.os.Bundle;
 

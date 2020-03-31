@@ -1,4 +1,4 @@
-package com.example.coockit;
+package com.example.coockit.ViewHolder;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.coockit.R;
 
 public class RecipeViewHolder extends RecyclerView.ViewHolder {
     private TextView recipeName;

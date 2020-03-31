@@ -57,8 +57,8 @@ public class HomeSingleRecipe extends AppCompatActivity {
                 directions.setText(recipe.getDirections());
                 difficulty.setText(recipe.getDifficulty());
                 prep.setText(recipe.getPreparationTime());
-                Picasso.get().load(recipe.getPicUrl()).into(imgView);
-
+                Picasso.get().load("recipe.getPicUrl()").into(imgView);
+                String ss = recipe.getPicUrl();
             }
 
             @Override

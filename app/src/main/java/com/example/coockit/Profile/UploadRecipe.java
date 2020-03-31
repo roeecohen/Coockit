@@ -19,7 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.coockit.Classes.Recipe;
-import com.example.coockit.FirebaseUtils;
+import com.example.coockit.Utils.FirebaseUtils;
 import com.example.coockit.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

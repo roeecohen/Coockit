@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coockit.Classes.Recipe;
-import com.example.coockit.FirebaseUtils;
+import com.example.coockit.Utils.FirebaseUtils;
 import com.example.coockit.R;
-import com.example.coockit.RecipeViewHolder;
+import com.example.coockit.ViewHolder.RecipeViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;

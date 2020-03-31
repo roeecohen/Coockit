@@ -1,4 +1,4 @@
-package com.example.coockit;
+package com.example.coockit.Utils;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
