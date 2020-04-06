@@ -27,8 +27,6 @@ public class HomeFragment extends Fragment {
     private RecyclerView recyclerView;
     private FirebaseRecyclerAdapter<Recipe, HomeFragment.HomeRecipesViewHolder> adapter;
 
-
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -1,5 +1,6 @@
 package com.example.coockit.Search;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
@@ -22,13 +23,14 @@ import com.example.coockit.R;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {
 
     private Context mContext;
+    private Activity mActivity;
 
-    public SearchAdapter(Intent intent,Context context) {
+    public SearchAdapter(Context context, Activity act) {
         mContext = context;
+        mActivity = act;
     }
 
     @NonNull
@@ -41,23 +43,23 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
     @Override
     public void onBindViewHolder(@NonNull SearchViewHolder holder, final int position) {
-        holder.title.setText((String)SearchResults.getmTitles().get(position));
-        holder.url.setText((String)SearchResults.getmUrls().get(position));
-        holder.ingredients.setText((String)SearchResults.getmIngredients().get(position));
-        Picasso.get().load((String)SearchResults.getmPictures().get(position)).into(holder.img);
+        holder.title.setText((String)Results.getmTitles().get(position));
+        holder.url.setText((String)Results.getmUrls().get(position));
+        holder.ingredients.setText((String)Results.getmIngredients().get(position));
+        Picasso.get().load((String)Results.getmPictures().get(position)).into(holder.img);
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent browse = new Intent( Intent.ACTION_VIEW , Uri.parse((String)SearchResults.getmUrls().get(position)) );
-                mContext.startActivity( browse );
+                Intent browse = new Intent( Intent.ACTION_VIEW , Uri.parse((String)Results.getmClickUrls().get(position)) );
+                mActivity.startActivity( browse );
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return SearchResults.getmTitles().size();
+        return Results.getmTitles().size();
     }
 
     public class SearchViewHolder extends RecyclerView.ViewHolder {
@@ -69,7 +71,6 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
         public SearchViewHolder(@NonNull View itemView) {
             super(itemView);
-
             title = (TextView) itemView.findViewById(R.id.title);
             url = (TextView) itemView.findViewById(R.id.url);
             ingredients = (TextView) itemView.findViewById(R.id.ingredients);

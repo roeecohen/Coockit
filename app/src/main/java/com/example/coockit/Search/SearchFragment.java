@@ -1,6 +1,5 @@
 package com.example.coockit.Search;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,35 +9,20 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.coockit.Home.HomeSingleRecipe;
-import com.example.coockit.Profile.ProfileRecipes;
 import com.example.coockit.R;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class SearchFragment extends Fragment {
 
     private View mView;
+    private ListView mListView;
 
     private Button mSearchBtn;
     private String mSearchInput;
@@ -53,16 +37,18 @@ public class SearchFragment extends Fragment {
         autoComplete.listners();
 
         mSearchBtn = (Button) mView.findViewById(R.id.search_btn);
+        mListView = (ListView) mView.findViewById(R.id.search_item_list);
 
         mSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), SearchResults.class);
-                intent.putExtra("search_input", mSearchInput);
-                startActivity(intent);
+//                Intent intent = new Intent(getContext(), SearchResults.class);
+//                intent.putExtra("search_input", mSearchInput);
+//                startActivity(intent);
+                mListView.setVisibility(View.GONE);
+                new Results(getActivity(),getActivity().getApplicationContext(),mView,mSearchInput);
             }
         });
-
         return mView;
     }
 
@@ -97,6 +83,7 @@ public class SearchFragment extends Fragment {
 
                 @Override
                 public boolean onQueryTextChange(String str) {
+                    mListView.setVisibility(View.VISIBLE);
                     showFilters(str);
                     return false;
                 }
@@ -106,7 +93,6 @@ public class SearchFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     String str = myListView.getItemAtPosition(position).toString();
-
                     int counter = lettersAfterComma();
 
                     if (mIsComma)
@@ -115,7 +101,6 @@ public class SearchFragment extends Fragment {
                         mySearchView.setQuery(mSearchInput.substring(0, mSearchInput.length() - counter) + str, false);
                     else
                         mySearchView.setQuery(str, false);
-
                 }
             });
         }
@@ -155,7 +140,6 @@ public class SearchFragment extends Fragment {
                     ++counter;
                 }
             return isComma ? counter : 0;
-
         }
     }
 }
