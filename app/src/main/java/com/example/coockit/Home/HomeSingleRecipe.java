@@ -36,14 +36,14 @@ public class HomeSingleRecipe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_single_recipe);
 
-        recipeName = (TextView) findViewById(R.id.single_rec_name);
-        ingerdients =(TextView)findViewById(R.id.single_rec_ingred);
+        recipeName = (TextView) findViewById(R.id.rec_name);
+        ingerdients =(TextView)findViewById(R.id.rec_ingred);
         ingerdients.setMovementMethod(new ScrollingMovementMethod());
-        directions =(TextView)findViewById(R.id.single_rec_dire);
+        directions =(TextView)findViewById(R.id.rec_dire);
         directions.setMovementMethod(new ScrollingMovementMethod());
-        difficulty =(TextView)findViewById(R.id.single_rec_diffi);
-        prep =(TextView)findViewById(R.id.single_rec_prep);
-        imgView = (ImageView)findViewById(R.id.single_rec_img);
+        difficulty =(TextView)findViewById(R.id.rec_diffi);
+        prep =(TextView)findViewById(R.id.rec_prep);
+        imgView = (ImageView)findViewById(R.id.rec_img);
 
         database= FirebaseDatabase.getInstance().getReference("Recipes");
 
@@ -80,6 +80,5 @@ public class HomeSingleRecipe extends AppCompatActivity {
 
             }
         });
-
     }
 }

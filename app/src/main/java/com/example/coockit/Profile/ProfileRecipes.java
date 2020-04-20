@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,11 +28,14 @@ public class ProfileRecipes extends AppCompatActivity {
     private RecyclerView recyclerView;
     private FirebaseRecyclerAdapter<Recipe, RecipeViewHolder> adapter;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_recipes);
+
+        Toolbar toolbar =findViewById(R.id.orange_top_bar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("My Recipes");
 
         recyclerView = findViewById(R.id.recycle_view);
         recyclerView.setHasFixedSize(true);

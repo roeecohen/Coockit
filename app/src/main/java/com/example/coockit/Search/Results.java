@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.coockit.Profile.UploadRecipe;
 import com.example.coockit.R;
 
 import org.json.JSONArray;
@@ -79,7 +81,7 @@ public class Results {
         try {
             //try catch for this exception
             String ingredients = URLDecoder.decode(mSearchInput, "UTF-8");
-            String url = "https://recipe-puppy.p.rapidapi.com/?i="+ingredients;
+            String url = "http://www.recipepuppy.com/api/?i="+ingredients;
 
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                     new Response.Listener<JSONObject>() {
@@ -88,16 +90,20 @@ public class Results {
                             try {
                                 JSONArray jsonArray = response.getJSONArray("results");
 
+                                if(jsonArray.length()==0)
+                                    Toast.makeText(mContext,"No recipes found! please try different ingredients",Toast.LENGTH_SHORT).show();
+
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject recipe = jsonArray.getJSONObject(i);
-
-                                    mTitles.add(recipe.getString("title"));
-                                    addWebsiteName(recipe.getString("href"));
-                                    mClickUrls.add(recipe.getString("href"));
-                                    mIngredients.add(recipe.getString("ingredients"));
-                                    mPictures.add(recipe.getString("thumbnail"));
-                                    Log.d("Debug2", mTitles.get(i));
-                                    callBack.onSuccess();
+                                    if(!isBlackList(recipe.getString("href"))) {
+                                        mTitles.add(recipe.getString("title"));
+                                        addWebsiteName(recipe.getString("href"));
+                                        mClickUrls.add(recipe.getString("href"));
+                                        mIngredients.add(recipe.getString("ingredients"));
+                                        mPictures.add(recipe.getString("thumbnail"));
+                                        //Log.d("Debug2", mTitles.get(i));
+                                        callBack.onSuccess();
+                                    }
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -108,26 +114,38 @@ public class Results {
                 public void onErrorResponse(VolleyError error) {
                     error.printStackTrace();
                 }
-            }) {
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    Map<String, String> params = new HashMap<String, String>();
-                    params.put("x-rapidapi-host", "recipe-puppy.p.rapidapi.com");
-                    params.put("x-rapidapi-key", "a5e0c90d95msh61c8593b87e07bfp1130c5jsn287715fa66bc");
-
-                    return params;
-                }
-            };
+            });
+//            {
+//                @Override
+//                public Map<String, String> getHeaders() throws AuthFailureError {
+//                    Map<String, String> params = new HashMap<String, String>();
+//                    params.put("x-rapidapi-host", "recipe-puppy.p.rapidapi.com");
+//                    params.put("x-rapidapi-key", "a5e0c90d95msh61c8593b87e07bfp1130c5jsn287715fa66bc");
+//
+//                    return params;
+//                }
+//            };
             mQueue.add(request);
         } catch (UnsupportedEncodingException e) {
             throw new AssertionError("UTF-8 is unknown");
         }
     }
 
+    private boolean isBlackList(String href) {
+        String result = cutUrl(href);
+        if(result.equals("http://cookeatshare.com"))
+            return true;
+        return false;
+    }
+
     private void addWebsiteName(String url) {
+        mUrls.add(cutUrl(url));
+    }
+
+    private String cutUrl(String url) {
         int count=0;
-        char urlArr[] = url.toCharArray();
         String result="";
+        char urlArr[] = url.toCharArray();
 
         for (int i=0; i<url.length();i++)
         {
@@ -139,7 +157,7 @@ public class Results {
 
             result+=urlArr[i];
         }
-        mUrls.add(result);
+        return result;
     }
 
     public static ArrayList<String> getmTitles() {

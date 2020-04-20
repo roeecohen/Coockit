@@ -8,8 +8,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/search_card"
-        android:layout_width="367dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="91dp"
         android:layout_margin="2dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -51,7 +51,8 @@
                 android:layout_width="266dp"
                 android:layout_height="29dp"
                 android:text="title"
-                android:textSize="20sp"
+                android:textColor="#484848"
+                android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/img"

@@ -1,5 +1,6 @@
 package com.example.coockit.Search;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,11 +8,15 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.coockit.R;
@@ -23,7 +28,6 @@ public class SearchFragment extends Fragment {
 
     private View mView;
     private ListView mListView;
-
     private Button mSearchBtn;
     private String mSearchInput;
 
@@ -42,9 +46,6 @@ public class SearchFragment extends Fragment {
         mSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getContext(), SearchResults.class);
-//                intent.putExtra("search_input", mSearchInput);
-//                startActivity(intent);
                 mListView.setVisibility(View.GONE);
                 new Results(getActivity(),getActivity().getApplicationContext(),mView,mSearchInput);
             }
@@ -78,6 +79,8 @@ public class SearchFragment extends Fragment {
             mySearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
+                    mListView.setVisibility(View.GONE);
+                    new Results(getActivity(),getActivity().getApplicationContext(),mView,mSearchInput);
                     return false;
                 }
 

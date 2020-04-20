@@ -4,107 +4,148 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="367dp"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:layout_margin="10dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/rec_name"
-                android:layout_width="120dp"
-                android:layout_height="28dp"
-                android:layout_marginTop="16dp"
-                android:text="Name"
+                android:id="@+id/rec_dire"
+                android:layout_width="355dp"
+                android:layout_height="wrap_content"
+                android:text="Directions text"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.036"
+                app:layout_constraintHorizontal_bias="0.285"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/dir_text" />
 
             <ImageView
                 android:id="@+id/rec_img"
-                android:layout_width="351dp"
-                android:layout_height="125dp"
+                android:layout_width="417dp"
+                android:layout_height="283dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rec_name" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/ingredients"
-                android:layout_width="wrap_content"
+                android:layout_width="369dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="148dp"
                 android:text="Ingredients"
+                android:textColor="#484848"
+                android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.03"
+                app:layout_constraintHorizontal_bias="0.357"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rec_img" />
 
             <TextView
                 android:id="@+id/rec_ingred"
-                android:layout_width="324dp"
+                android:layout_width="355dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:text="Ingredients text"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.473"
+                app:layout_constraintHorizontal_bias="0.285"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ingredients" />
 
             <TextView
-                android:id="@+id/rec_dire"
-                android:layout_width="324dp"
+                android:id="@+id/rec_name"
+                android:layout_width="369dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Directions text"
+                android:layout_marginTop="12dp"
+                android:text="Name"
+                android:textColor="#484848"
+                android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.545"
+                app:layout_constraintHorizontal_bias="0.357"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dir_text" />
+                app:layout_constraintTop_toBottomOf="@+id/rec_img" />
+
+            <TextView
+                android:id="@+id/rec_prep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="PrepTime"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.925"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rec_name" />
+
+            <TextView
+                android:id="@+id/rec_diffi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="diff text"
+                app:layout_constraintEnd_toStartOf="@+id/textView10"
+                app:layout_constraintHorizontal_bias="0.622"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rec_name" />
 
             <TextView
                 android:id="@+id/dir_text"
-                android:layout_width="wrap_content"
+                android:layout_width="369dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="76dp"
                 android:text="Directions"
+                android:textColor="#484848"
+                android:textSize="28sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.039"
+                app:layout_constraintHorizontal_bias="0.38"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rec_ingred" />
 
             <TextView
-                android:id="@+id/rec_diffi"
-                android:layout_width="92dp"
-                android:layout_height="29dp"
-                android:layout_marginTop="40dp"
-                android:text="Difficulty"
-                app:layout_constraintBottom_toTopOf="@+id/rec_img"
-                app:layout_constraintStart_toEndOf="@+id/rec_name"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+                android:id="@+id/textView8"
+                android:layout_width="63dp"
+                android:layout_height="21dp"
+                android:layout_marginTop="4dp"
+                android:text="Difficulty:"
+                app:layout_constraintEnd_toStartOf="@+id/rec_diffi"
+                app:layout_constraintHorizontal_bias="0.533"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rec_name" />
 
             <TextView
-                android:id="@+id/rec_prep"
-                android:layout_width="85dp"
-                android:layout_height="30dp"
-                android:text="PrepTime"
-                app:layout_constraintBottom_toTopOf="@+id/rec_img"
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Preparation Time:"
+                app:layout_constraintEnd_toStartOf="@+id/rec_prep"
+                app:layout_constraintHorizontal_bias="0.943"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rec_name" />
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="362dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="40dp"
+                android:background="?android:attr/listDivider"
+                android:scrollbarSize="1dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/rec_diffi" />
+                app:layout_constraintHorizontal_bias="0.306"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rec_ingred" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

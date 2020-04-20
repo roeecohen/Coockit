@@ -19,33 +19,42 @@ import android.widget.Toast;
 
 import com.example.coockit.Main.MainActivity;
 import com.example.coockit.Classes.Member;
+import com.example.coockit.Profile.ProfileRecipes;
+import com.example.coockit.Profile.UploadRecipe;
 import com.example.coockit.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
-    EditText mFullName, mEmail, mPassword;
-    Button mRegisterBtn;
-    TextView mLoginBtn;
-    FirebaseAuth fAuth;
-    ProgressBar mProgressBar;
-    Drawable progressDrawable;
-    Member member;
+    private EditText mFullName, mEmail, mPhone,mPassword;
+    private Button mRegisterBtn;
+    private TextView mLoginBtn;
+    private FirebaseAuth fAuth;
+    private ProgressBar mProgressBar;
+    private Drawable progressDrawable;
+    private Member member;
+    private DatabaseReference databaseRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         fAuth=FirebaseAuth.getInstance();
-        //fAuth.signOut();
+
         if(fAuth.getCurrentUser()!=null) {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         }
+        databaseRef = FirebaseDatabase.getInstance().getReference("Members");
 
         mFullName = findViewById(R.id.fullname);
         mEmail = findViewById(R.id.email);
+        mPhone = findViewById(R.id.phone);
         mPassword = findViewById(R.id.pass);
         mLoginBtn = findViewById(R.id.loginBtn);
         mRegisterBtn = findViewById(R.id.registerBtn);
@@ -57,15 +66,11 @@ public class Register extends AppCompatActivity {
         //reff = FirebaseDatabase.getInstance().getReference().child("member");
 
 
-        member = new Member();
         mRegisterBtn.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view) {
-                member.setFullName(mFullName.getText().toString().trim());
-                member.setEmail(mEmail.getText().toString().trim());
-                member.setPass(mPassword.getText().toString().trim());
-                //reff.setValue(member);
+                member = new Member(mFullName.getText().toString().trim(),mEmail.getText().toString().trim(),mPhone.getText().toString().trim(),mPassword.getText().toString().trim(),"");
 
                 if(TextUtils.isEmpty(member.getEmail())){
                     mEmail.setError("Email is Required.");
@@ -84,7 +89,6 @@ public class Register extends AppCompatActivity {
 
                 mProgressBar.setVisibility(View.VISIBLE);
 
-
                 fAuth.createUserWithEmailAndPassword(member.getEmail(), member.getPass()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -99,6 +103,8 @@ public class Register extends AppCompatActivity {
 
                     }
                 });
+                databaseRef.child(member.getEmail()).setValue(member);
+
             }
         });
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
@@ -108,4 +114,5 @@ public class Register extends AppCompatActivity {
             }
         });
     }
+
 }
