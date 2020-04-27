@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +16,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.coockit.Classes.Recipe;
-import com.example.coockit.Home.HomeSingleRecipe;
 import com.example.coockit.R;
-import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {

@@ -2,7 +2,6 @@ package com.example.coockit.Main;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
@@ -11,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.coockit.Home.HomeFragment;
-import com.example.coockit.Home.HomeSingleRecipe;
 import com.example.coockit.Profile.ProfileFragment;
 import com.example.coockit.LoginRegister.Login;
 import com.example.coockit.Profile.ProfileRecipes;

@@ -68,7 +68,7 @@ public class HomeFragment extends Fragment {
                     public void onClick(View v) {
                         Recipe recipe= (Recipe)adapter.getItem(position);
 
-                        Intent intent = new Intent(getContext(), HomeSingleRecipe.class);
+                        Intent intent = new Intent(getContext(), SingleRecipeItem.class);
                         intent.putExtra("rec_id", recipe.getId());
                         startActivity(intent);
                     }

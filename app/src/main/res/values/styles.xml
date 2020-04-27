@@ -16,4 +16,9 @@
     <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
         <item name="android:background">@drawable/rounded_button_white</item>
     </style>
+
+    <style name="progressBar">
+        <item name="colorAccent">#FFFFFF</item>
+    </style>
+
 </resources>

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".Home.HomeSingleRecipe">
+    tools:context=".Home.SingleRecipeItem">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -84,8 +84,8 @@
                 android:layout_marginTop="4dp"
                 android:text="PrepTime"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.925"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.077"
+                app:layout_constraintStart_toEndOf="@+id/textView10"
                 app:layout_constraintTop_toBottomOf="@+id/rec_name" />
 
             <TextView
@@ -94,9 +94,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="diff text"
-                app:layout_constraintEnd_toStartOf="@+id/textView10"
-                app:layout_constraintHorizontal_bias="0.622"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.027"
+                app:layout_constraintStart_toEndOf="@+id/textView8"
                 app:layout_constraintTop_toBottomOf="@+id/rec_name" />
 
             <TextView
@@ -114,12 +114,12 @@
 
             <TextView
                 android:id="@+id/textView8"
-                android:layout_width="63dp"
-                android:layout_height="21dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Difficulty:"
-                app:layout_constraintEnd_toStartOf="@+id/rec_diffi"
-                app:layout_constraintHorizontal_bias="0.533"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.045"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rec_name" />
 
@@ -129,9 +129,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="Preparation Time:"
-                app:layout_constraintEnd_toStartOf="@+id/rec_prep"
-                app:layout_constraintHorizontal_bias="0.943"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.091"
+                app:layout_constraintStart_toEndOf="@+id/rec_diffi"
                 app:layout_constraintTop_toBottomOf="@+id/rec_name" />
 
             <View

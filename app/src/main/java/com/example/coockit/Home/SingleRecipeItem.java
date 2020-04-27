@@ -20,7 +20,7 @@ import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 
-public class HomeSingleRecipe extends AppCompatActivity {
+public class SingleRecipeItem extends AppCompatActivity {
     private DatabaseReference database;
     private Query query ;
 
@@ -34,7 +34,7 @@ public class HomeSingleRecipe extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_single_recipe);
+        setContentView(R.layout.activity_single_recipe_item);
 
         recipeName = (TextView) findViewById(R.id.rec_name);
         ingerdients =(TextView)findViewById(R.id.rec_ingred);
