@@ -18,6 +18,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.coockit.R;
 
@@ -30,6 +32,8 @@ public class SearchFragment extends Fragment {
     private ListView mListView;
     private Button mSearchBtn;
     private String mSearchInput;
+    private IngredientsOptionsAdapter mIngOptionsAdapter;
+    private RecyclerView mIngOptionsRecycler;
 
     public SearchFragment() { }
 
@@ -42,6 +46,12 @@ public class SearchFragment extends Fragment {
 
         mSearchBtn = (Button) mView.findViewById(R.id.search_btn);
         mListView = (ListView) mView.findViewById(R.id.search_item_list);
+
+        mIngOptionsRecycler = mView.findViewById(R.id.ingred_options_recycler);
+        mIngOptionsAdapter = new IngredientsOptionsAdapter(getActivity().getApplicationContext(),getActivity());
+
+        mIngOptionsRecycler.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+        mIngOptionsRecycler.setAdapter(mIngOptionsAdapter);
 
         mSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -42,11 +42,9 @@ public class Results {
     private Activity mActivity;
     private String mSearchInput;
 
-
     public interface VolleyCallBack {
         void onSuccess();
     }
-
 
     public Results(Activity act, Context con, View view, String searchIn) {
         mActivity = act;
@@ -101,7 +99,6 @@ public class Results {
                                         mClickUrls.add(recipe.getString("href"));
                                         mIngredients.add(recipe.getString("ingredients"));
                                         mPictures.add(recipe.getString("thumbnail"));
-                                        //Log.d("Debug2", mTitles.get(i));
                                         callBack.onSuccess();
                                     }
                                 }
@@ -115,16 +112,6 @@ public class Results {
                     error.printStackTrace();
                 }
             });
-//            {
-//                @Override
-//                public Map<String, String> getHeaders() throws AuthFailureError {
-//                    Map<String, String> params = new HashMap<String, String>();
-//                    params.put("x-rapidapi-host", "recipe-puppy.p.rapidapi.com");
-//                    params.put("x-rapidapi-key", "a5e0c90d95msh61c8593b87e07bfp1130c5jsn287715fa66bc");
-//
-//                    return params;
-//                }
-//            };
             mQueue.add(request);
         } catch (UnsupportedEncodingException e) {
             throw new AssertionError("UTF-8 is unknown");
