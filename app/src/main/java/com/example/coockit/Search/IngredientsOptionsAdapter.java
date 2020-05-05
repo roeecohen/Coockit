@@ -1,14 +1,13 @@
 package com.example.coockit.Search;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,46 +15,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.coockit.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class IngredientsOptionsAdapter extends RecyclerView.Adapter<IngredientsOptionsAdapter.IngOptionsViewHolder> {
 
     private Context mContext;
-    private Activity mActivity;
-    private static ArrayList<String> mCheckBoxOptions;
+    private int checkOptionsCounter;
+    private static ArrayList<String> mCheckBoxMarkedOptions;
 
-    public IngredientsOptionsAdapter(Context context, Activity act) {
+    public IngredientsOptionsAdapter(Context context,View view) {
+        checkOptionsCounter=0;
         mContext = context;
-        mActivity = act;
-        mCheckBoxOptions = new ArrayList<String>();
-        mCheckBoxOptions.add("cvc");
-        mCheckBoxOptions.add("cvc2");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
-        mCheckBoxOptions.add("cvc3");
+        mCheckBoxMarkedOptions = new ArrayList<String>();
     }
 
     @NonNull
@@ -66,43 +37,42 @@ public class IngredientsOptionsAdapter extends RecyclerView.Adapter<IngredientsO
         return new IngOptionsViewHolder(view);
     }
 
-
-
     @Override
     public void onBindViewHolder(@NonNull IngOptionsViewHolder holder, final int position) {
-        holder.checkBox.setText(mCheckBoxOptions.get(position));
+        List<String> optionsTemp = new ArrayList<String>();
+        optionsTemp.addAll(Results.getmCheckBoxOptions());
+        holder.checkBox.setText(optionsTemp.get(position));
 
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
                 if(buttonView.isChecked()) {
+                    ++checkOptionsCounter;
+                    if(checkOptionsCounter>0)
+                        SearchFragment.getmCheckAroundBtn().setVisibility(View.VISIBLE);
 
                     buttonView.setBackgroundResource(R.drawable.rounded_button);
                     buttonView.setTextColor(Color.parseColor("#FFFFFF"));
-                    mCheckBoxOptions.add(buttonView.getText().toString());
+                    mCheckBoxMarkedOptions.add(buttonView.getText().toString().trim());
                 }
                 else {
+                    --checkOptionsCounter;
+                    if(checkOptionsCounter==0)
+                        SearchFragment.getmCheckAroundBtn().setVisibility(View.GONE);
+
                     buttonView.setBackgroundResource(R.drawable.rounded_button_gray);
                     buttonView.setTextColor(Color.parseColor("#6A6A6A"));
-
+                    mCheckBoxMarkedOptions.remove(buttonView.getText().toString().trim());
                 }
-
             }
         }
         );
-
-        if(holder.checkBox.isChecked()) {
-            holder.checkBox.setBackgroundColor(Color.parseColor("#FEFEFE"));
-            mCheckBoxOptions.add(holder.checkBox.getText().toString());
-        }
-
-       // checkBoxTemp.setText("xczx");
     }
 
     @Override
     public int getItemCount() {
-        return mCheckBoxOptions.size();
+        return Results.getmCheckBoxOptions().size();
     }
 
     public class IngOptionsViewHolder extends RecyclerView.ViewHolder {
@@ -115,8 +85,8 @@ public class IngredientsOptionsAdapter extends RecyclerView.Adapter<IngredientsO
         }
     }
 
-    public static ArrayList<String> getmCheckBoxOptions() {
-        return mCheckBoxOptions;
+    public static ArrayList<String> getmCheckBoxMarkedOptions() {
+        return mCheckBoxMarkedOptions;
     }
 }
 

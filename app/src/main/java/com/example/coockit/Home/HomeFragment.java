@@ -37,7 +37,6 @@ public class HomeFragment extends Fragment {
         Toolbar toolbar =view.findViewById(R.id.orange_top_bar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("CoockIt");
-
         recyclerView = view.findViewById(R.id.home_recycle_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

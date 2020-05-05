@@ -42,7 +42,9 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         holder.title.setText((String)Results.getmTitles().get(position));
         holder.url.setText((String)Results.getmUrls().get(position));
         holder.ingredients.setText((String)Results.getmIngredients().get(position));
-        Picasso.get().load((String)Results.getmPictures().get(position)).into(holder.img);
+
+        if(!Results.getmPictures().get(position).isEmpty())
+            Picasso.get().load((String)Results.getmPictures().get(position)).into(holder.img);
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override

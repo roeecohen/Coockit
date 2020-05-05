@@ -1,6 +1,5 @@
 package com.example.coockit.Search;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,15 +7,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,6 +21,8 @@ import com.example.coockit.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SearchFragment extends Fragment {
 
@@ -32,8 +30,9 @@ public class SearchFragment extends Fragment {
     private ListView mListView;
     private Button mSearchBtn;
     private String mSearchInput;
-    private IngredientsOptionsAdapter mIngOptionsAdapter;
-    private RecyclerView mIngOptionsRecycler;
+    private static CardView mOptions;
+    private static RecyclerView mRecyclerView;
+    private static Button mCheckAroundBtn;
 
     public SearchFragment() { }
 
@@ -46,18 +45,26 @@ public class SearchFragment extends Fragment {
 
         mSearchBtn = (Button) mView.findViewById(R.id.search_btn);
         mListView = (ListView) mView.findViewById(R.id.search_item_list);
+        mOptions = (CardView) mView.findViewById(R.id.check_box_card);
+        mRecyclerView =(RecyclerView)mView.findViewById(R.id.search_results_recycler);
+        mRecyclerView.setHasFixedSize(true);
 
-        mIngOptionsRecycler = mView.findViewById(R.id.ingred_options_recycler);
-        mIngOptionsAdapter = new IngredientsOptionsAdapter(getActivity().getApplicationContext(),getActivity());
+        mCheckAroundBtn = (Button)mView.findViewById(R.id.check_around_btn);
+        mCheckAroundBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        mIngOptionsRecycler.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
-        mIngOptionsRecycler.setAdapter(mIngOptionsAdapter);
+            }
+        });
 
         mSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mListView.setVisibility(View.GONE);
+                mCheckAroundBtn.setVisibility(View.GONE);
                 new Results(getActivity(),getActivity().getApplicationContext(),mView,mSearchInput);
+
+
             }
         });
         return mView;
@@ -90,6 +97,8 @@ public class SearchFragment extends Fragment {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
                     mListView.setVisibility(View.GONE);
+                    mCheckAroundBtn.setVisibility(View.GONE);
+                    mRecyclerView.setVisibility(View.VISIBLE);
                     new Results(getActivity(),getActivity().getApplicationContext(),mView,mSearchInput);
                     return false;
                 }
@@ -97,6 +106,9 @@ public class SearchFragment extends Fragment {
                 @Override
                 public boolean onQueryTextChange(String str) {
                     mListView.setVisibility(View.VISIBLE);
+                    mRecyclerView.setVisibility(View.GONE);
+                    mOptions.setVisibility(View.GONE);
+
                     showFilters(str);
                     return false;
                 }
@@ -154,5 +166,15 @@ public class SearchFragment extends Fragment {
                 }
             return isComma ? counter : 0;
         }
+    }
+
+    public static Button getmCheckAroundBtn() {
+        return mCheckAroundBtn;
+    }
+    public static RecyclerView getmRecyclerView() {
+        return mRecyclerView;
+    }
+    public static CardView getmOptions() {
+        return mOptions;
     }
 }
