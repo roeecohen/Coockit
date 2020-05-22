@@ -177,7 +177,8 @@ public class ProfileFragment extends Fragment {
                 name.setText(member.getFullName());
                 email.setText(member.getEmail());
                 phone.setText(member.getPhone());
-                Picasso.get().load(member.getImg()).into(imgView);
+                if(!member.getImg().isEmpty())
+                    Picasso.get().load(member.getImg()).into(imgView);
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {}

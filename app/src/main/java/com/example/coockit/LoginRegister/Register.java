@@ -103,7 +103,10 @@ public class Register extends AppCompatActivity {
 
                     }
                 });
-                databaseRef.child(member.getEmail()).setValue(member);
+                databaseRef.child(member.getId()).setValue(member).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) { }
+                });
 
             }
         });
