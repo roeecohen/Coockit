@@ -56,7 +56,6 @@ public class SearchFragment extends Fragment {
 
             }
         });
-
         mSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

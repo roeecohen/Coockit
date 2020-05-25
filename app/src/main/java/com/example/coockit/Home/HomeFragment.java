@@ -58,8 +58,6 @@ public class HomeFragment extends Fragment {
             @Override
             public HomeRecipesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_recipe_item,parent,false);
-
-
                 return new HomeFragment.HomeRecipesViewHolder(view);
             }
 
@@ -104,17 +102,13 @@ public class HomeFragment extends Fragment {
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {}
-
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {}
-
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {}
-
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
-
     }
 
     private class HomeRecipesViewHolder extends RecyclerView.ViewHolder {
@@ -125,7 +119,6 @@ public class HomeFragment extends Fragment {
 
         public HomeRecipesViewHolder(@NonNull View itemView) {
             super(itemView);
-
             recipeName = (TextView)itemView.findViewById(R.id.home_rec_name);
             memberName = (TextView)itemView.findViewById(R.id.member_name);
             imgView = (ImageView)itemView.findViewById(R.id.home_rec_img);

@@ -83,7 +83,6 @@ public class ProfileFragment extends Fragment {
                 startActivityForResult(intent,1);
             }
         });
-
         setMemberData();
         return view;
     }
@@ -134,22 +133,18 @@ public class ProfileFragment extends Fragment {
                                 if(getActivity()!=null)
                                     Toast.makeText(getActivity().getApplicationContext(),"Image upload succeeded",Toast.LENGTH_SHORT).show();
                             }
-
                             @Override
                             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                             }
-
                             @Override
                             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
 
                             }
-
                             @Override
                             public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                             }
-
                             @Override
                             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -162,7 +157,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(getContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
-
             }
         });
     }
@@ -182,13 +176,10 @@ public class ProfileFragment extends Fragment {
             }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {}
-
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {}
-
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {}
-
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
