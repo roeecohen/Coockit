@@ -8,9 +8,9 @@
 
     <Button
         android:id="@+id/buttonUploadRec"
-        android:layout_width="418dp"
+        android:layout_width="match_parent"
         android:layout_height="58dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/rounded_back_2_corners"
         android:text="Upload recipe"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,48 +22,43 @@
 
     <EditText
         android:id="@+id/ingredients"
-        android:layout_width="410dp"
+        android:layout_width="match_parent"
         android:layout_height="149dp"
-        android:layout_marginTop="216dp"
+        android:layout_marginTop="372dp"
         android:background="@android:color/transparent"
         android:gravity="top"
         android:hint="Ingredients"
+        app:layout_constraintBottom_toTopOf="@+id/directions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/chooseImageView"
-        android:layout_width="412dp"
-        android:layout_height="151dp"
+        android:layout_width="match_parent"
+        android:layout_height="283dp"
         android:clickable="true"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.077"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/upload_image" />
 
-    <View
-        android:id="@+id/divider"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:background="#8AC7C7C7"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/ingredients"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chooseImageView"
-        app:layout_constraintVertical_bias="0.0" />
 
     <View
         android:id="@+id/divider2"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#8AC7C7C7"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/directions"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ingredients" />
 
@@ -82,30 +77,38 @@
 
     <EditText
         android:id="@+id/directions"
-        android:layout_width="410dp"
+        android:layout_width="match_parent"
         android:layout_height="149dp"
-        android:layout_marginTop="388dp"
+        android:layout_marginTop="576dp"
         android:background="@android:color/transparent"
         android:gravity="top"
         android:hint="Directions"
+        app:layout_constraintBottom_toTopOf="@+id/uploadProgress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.326" />
 
     <EditText
         android:id="@+id/name"
-        android:layout_width="441dp"
-        android:layout_height="33dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:gravity="top"
         android:hint="Recipe name"
         android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/chooseImageView"
+        app:layout_constraintVertical_bias="0.016" />
 
     <ProgressBar
         android:id="@+id/uploadProgress"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="414dp"
+        android:layout_width="match_parent"
         android:layout_height="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/buttonUploadRec"
         app:layout_constraintEnd_toEndOf="parent"
@@ -117,53 +120,53 @@
 
     <EditText
         android:id="@+id/difficulty"
-        android:layout_width="112dp"
-        android:layout_height="38dp"
+        android:layout_width="53dp"
+        android:layout_height="40dp"
         android:ems="10"
         android:inputType="numberSigned"
-        app:layout_constraintBottom_toTopOf="@+id/uploadProgress"
+        app:layout_constraintBottom_toTopOf="@+id/ingredients"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/directions"
-        app:layout_constraintVertical_bias="0.696" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Difficulty"
-        app:layout_constraintBottom_toTopOf="@+id/uploadProgress"
+        app:layout_constraintBottom_toTopOf="@+id/ingredients"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/directions"
-        app:layout_constraintVertical_bias="0.295" />
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintVertical_bias="0.354" />
 
     <EditText
         android:id="@+id/prep"
-        android:layout_width="123dp"
-        android:layout_height="38dp"
+        android:layout_width="53dp"
+        android:layout_height="40dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/buttonUploadRec"
+        app:layout_constraintBottom_toTopOf="@+id/ingredients"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.847"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/directions"
-        app:layout_constraintVertical_bias="0.555" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Preparation time"
-        app:layout_constraintBottom_toTopOf="@+id/uploadProgress"
+        app:layout_constraintBottom_toTopOf="@+id/ingredients"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.822"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/directions"
-        app:layout_constraintVertical_bias="0.295" />
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toEndOf="@+id/difficulty"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintVertical_bias="0.354" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,77 +5,206 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-  <androidx.constraintlayout.widget.ConstraintLayout
-      android:id="@id/imageView2"
+  <LinearLayout
       android:layout_width="match_parent"
-      android:layout_height="176dp"
-      android:background="@drawable/rounded_back"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.0">
+      app:layout_constraintTop_toTopOf="parent">
 
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="236dp"
-        android:layout_height="38dp"
-        android:iconifiedByDefault="false"
-        android:queryHint="Search here"
-        android:theme="@style/SearchViewStyle"
-
-        app:actionViewClass="android.support.v7.widget.SearchView"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="176dp"
+        android:background="@drawable/rounded_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.205"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.717">
-    </SearchView>
+        app:layout_constraintVertical_bias="0.0">
 
-    <Button
-        android:id="@+id/search_btn"
-        android:layout_width="80dp"
-        android:layout_height="38dp"
-        android:background="@drawable/rounded_button_white"
-        android:text="@android:string/search_go"
-        android:textColor="#FF9800"
+      <SearchView
+          android:id="@+id/searchView"
+          android:layout_width="236dp"
+          android:layout_height="38dp"
+          android:iconifiedByDefault="false"
+          android:queryHint="Search here"
+          android:theme="@style/SearchViewStyle"
+
+          app:actionViewClass="android.support.v7.widget.SearchView"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.205"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintVertical_bias="0.717"></SearchView>
+
+      <Button
+          android:id="@+id/search_btn"
+          android:layout_width="80dp"
+          android:layout_height="38dp"
+          android:background="@drawable/rounded_button_white"
+          android:text="@android:string/search_go"
+          android:textColor="#FF9800"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.16"
+          app:layout_constraintStart_toEndOf="@+id/searchView"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintVertical_bias="0.717" />
+
+      <TextView
+          android:id="@+id/search"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:fontFamily="@font/lobster"
+          android:text="Search For Recipe"
+          android:textColor="#FFFFFF"
+          android:textSize="25sp"
+          app:layout_constraintBottom_toTopOf="@+id/searchView"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.497"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintVertical_bias="0.205" />
+
+      <TextView
+          android:id="@+id/textView7"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Your ingredients (separated with comma)"
+          android:textColor="#FFFFFF"
+          app:layout_constraintBottom_toTopOf="@+id/searchView"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.493"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/search"
+          app:layout_constraintVertical_bias="0.093" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/result_tabs"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/check_box_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.0"></com.google.android.material.tabs.TabLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/check_box_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardElevation="0dp"
+        android:layout_marginTop="30dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/viewpager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.0">
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical">
+
+        <View
+            android:id="@+id/divider6"
+            android:layout_width="352dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:background="@color/grayDivider"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="33dp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="20dp"
+            android:text="Check for missing ingredients"
+            android:textColor="#323232"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ingred_options_recycler"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:layout_constraintVertical_bias="1.0" />
+
+
+
+        <Button
+            android:id="@+id/check_around_btn"
+            android:layout_width="107dp"
+            android:layout_height="34dp"
+            android:layout_marginVertical="10sp"
+            android:background="@drawable/rounded_button_green"
+            android:layout_gravity="center"
+            android:text="Check around"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ingred_options_recycler"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <View
+            android:layout_marginTop="10dp"
+            android:id="@+id/divider7"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:background="@color/grayDivider"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="33dp" />
+      </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
-        app:layout_constraintStart_toEndOf="@+id/searchView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.717" />
-
-    <TextView
-        android:id="@+id/search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/lobster"
-        android:text="Search For Recipe"
-        android:textColor="#FFFFFF"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/searchView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.205" />
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        tools:ignore="NotSibling">
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your ingredients (separated with comma)"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/searchView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search"
-        app:layout_constraintVertical_bias="0.093" />
-  </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.viewpager.widget.ViewPager>
+
+  </LinearLayout>
 
   <ListView
       android:id="@+id/search_item_list"
@@ -91,79 +220,6 @@
       android:visibility="invisible"
       tools:ignore="NotSibling"></ListView>
 
-  <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/search_results_recycler"
-      android:layout_width="wrap_content"
-      android:layout_height="280dp"
-      android:background="@null"
-      android:visibility="invisible"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/check_box_card">
-  </androidx.recyclerview.widget.RecyclerView>
-
-  <androidx.cardview.widget.CardView
-      android:id="@+id/check_box_card"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_margin="2dp"
-      android:visibility="gone"
-      app:layout_constraintBottom_toTopOf="@+id/search_results_recycler"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="1.0"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/imageView2"
-      app:layout_constraintVertical_bias="0.0">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-      <androidx.recyclerview.widget.RecyclerView
-          android:id="@+id/ingred_options_recycler"
-          android:layout_width="wrap_content"
-          android:layout_height="40dp"
-
-          android:layout_marginTop="20sp"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/textView5"
-          app:layout_constraintVertical_bias="1.0" />
-
-      <TextView
-          android:id="@+id/textView5"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="4dp"
-          android:paddingHorizontal="20dp"
-          android:text="Check for missing ingredients"
-          android:textColor="#323232"
-          android:textSize="16sp"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent" />
-
-      <Button
-          android:id="@+id/check_around_btn"
-          android:layout_width="107dp"
-          android:layout_height="34dp"
-          android:layout_marginVertical="10sp"
-          android:background="@drawable/rounded_button_green"
-          android:text="Check around"
-          android:textColor="#FFFFFF"
-          android:textSize="12sp"
-          android:visibility="gone"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.501"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/ingred_options_recycler"
-          app:layout_constraintVertical_bias="0.0" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-  </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

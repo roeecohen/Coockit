@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.NonNull;
@@ -14,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.coockit.Classes.Recipe;
 import com.example.coockit.Utils.FirebaseUtils;
 import com.example.coockit.R;
-import com.example.coockit.ViewHolder.RecipeViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -51,18 +53,15 @@ public class ProfileRecipes extends AppCompatActivity {
             @NonNull
             @Override
             public RecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_single_recipe_item,parent,false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.firebase_search_result_recipe_item,parent,false);
                 return new RecipeViewHolder(view);
             }
 
             @Override
             protected void onBindViewHolder(@NonNull RecipeViewHolder holder, int position, @NonNull Recipe model) {
-                holder.getRecipeName().setText(model.getName());
-                holder.getIngerdients().setText(model.getIngredients());
-                holder.getDirections().setText(model.getDirections());
-                holder.getDifficulty().setText(model.getDifficulty());
-                holder.getPrep().setText(model.getPreparationTime());
-                Picasso.get().load(model.getPicUrl()).into(holder.getImgView());
+                holder.recipeName.setText(model.getName());
+                Picasso.get().load(model.getPicUrl()).into(holder.imgView);
+                FirebaseUtils.clickImgOpenRecipe(holder.imgView,ProfileRecipes.this,getApplicationContext(),model.getId());
             }
         };
         recyclerView.setAdapter(adapter);
@@ -78,6 +77,18 @@ public class ProfileRecipes extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
         adapter.startListening();
+    }
+
+    private class RecipeViewHolder extends RecyclerView.ViewHolder {
+        private TextView recipeName;
+        private ImageView imgView;
+
+        public RecipeViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            recipeName = (TextView)itemView.findViewById(R.id.fire_result_rec_name);
+            imgView = (ImageView)itemView.findViewById(R.id.fire_result_rec_img);
+        }
     }
 
 }

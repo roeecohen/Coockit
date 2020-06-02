@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
@@ -40,7 +39,7 @@ public class IngredientsOptionsAdapter extends RecyclerView.Adapter<IngredientsO
     @Override
     public void onBindViewHolder(@NonNull IngOptionsViewHolder holder, final int position) {
         List<String> optionsTemp = new ArrayList<String>();
-        optionsTemp.addAll(Results.getmCheckBoxOptions());
+        optionsTemp.addAll(InternetResults.getmCheckBoxOptions());
         holder.checkBox.setText(optionsTemp.get(position));
 
         holder.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -72,7 +71,7 @@ public class IngredientsOptionsAdapter extends RecyclerView.Adapter<IngredientsO
 
     @Override
     public int getItemCount() {
-        return Results.getmCheckBoxOptions().size();
+        return InternetResults.getmCheckBoxOptions().size();
     }
 
     public class IngOptionsViewHolder extends RecyclerView.ViewHolder {

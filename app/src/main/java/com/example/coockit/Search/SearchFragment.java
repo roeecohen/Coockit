@@ -14,40 +14,50 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.coockit.R;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 public class SearchFragment extends Fragment {
 
     private View mView;
     private ListView mListView;
     private Button mSearchBtn;
-    private String mSearchInput;
+    private static String mSearchInput;
     private static CardView mOptions;
-    private static RecyclerView mRecyclerView;
     private static Button mCheckAroundBtn;
+    private TabLayout mTabLayout;
+    private ViewPager mViewPager;
 
     public SearchFragment() { }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_search, container, false);
 
+        mViewPager = (ViewPager) mView.findViewById(R.id.viewpager);
+        mTabLayout = (TabLayout) mView.findViewById(R.id.result_tabs);
+        mTabLayout.setupWithViewPager(mViewPager);
+
         SearchAutoComplete autoComplete = new SearchAutoComplete();
         autoComplete.listners();
 
+        mTabLayout = (TabLayout) mView.findViewById(R.id.result_tabs);
         mSearchBtn = (Button) mView.findViewById(R.id.search_btn);
         mListView = (ListView) mView.findViewById(R.id.search_item_list);
         mOptions = (CardView) mView.findViewById(R.id.check_box_card);
-        mRecyclerView =(RecyclerView)mView.findViewById(R.id.search_results_recycler);
-        mRecyclerView.setHasFixedSize(true);
 
         mCheckAroundBtn = (Button)mView.findViewById(R.id.check_around_btn);
         mCheckAroundBtn.setOnClickListener(new View.OnClickListener() {
@@ -56,17 +66,51 @@ public class SearchFragment extends Fragment {
 
             }
         });
+
         mSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListView.setVisibility(View.GONE);
-                mCheckAroundBtn.setVisibility(View.GONE);
-                new Results(getActivity(),getActivity().getApplicationContext(),mView,mSearchInput);
-
+                setVisibilties();
+                new InternetResults(getActivity(),getActivity().getApplicationContext(),mView,mSearchInput);
+                setupViewPager();
 
             }
         });
         return mView;
+    }
+
+    // Add Fragments to Tabs
+    private void setupViewPager() {
+        Adapter adapter = new Adapter(getChildFragmentManager(),1);
+        adapter.addFragment(new InternetResultsTab(), "Web Results");
+        adapter.addFragment(new FirebaseResultsTab(), "App Results");
+        mViewPager.setAdapter(adapter);
+    }
+
+    static class Adapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public Adapter(@NonNull FragmentManager fm, int behavior) {
+            super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
     }
 
     public class SearchAutoComplete {
@@ -95,18 +139,18 @@ public class SearchFragment extends Fragment {
             mySearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
-                    mListView.setVisibility(View.GONE);
-                    mCheckAroundBtn.setVisibility(View.GONE);
-                    mRecyclerView.setVisibility(View.VISIBLE);
-                    new Results(getActivity(),getActivity().getApplicationContext(),mView,mSearchInput);
+                    setVisibilties();
+                    new InternetResults(getActivity(),getActivity().getApplicationContext(),mView,mSearchInput);
+                    setupViewPager();
                     return false;
                 }
 
                 @Override
                 public boolean onQueryTextChange(String str) {
                     mListView.setVisibility(View.VISIBLE);
-                    mRecyclerView.setVisibility(View.GONE);
+                    mViewPager.setVisibility(View.GONE);
                     mOptions.setVisibility(View.GONE);
+                    mTabLayout.setVisibility(View.GONE);
 
                     showFilters(str);
                     return false;
@@ -166,14 +210,19 @@ public class SearchFragment extends Fragment {
             return isComma ? counter : 0;
         }
     }
-
+    private void setVisibilties() {
+        mListView.setVisibility(View.GONE);
+        mCheckAroundBtn.setVisibility(View.GONE);
+        mViewPager.setVisibility(View.VISIBLE);
+        mTabLayout.setVisibility(View.VISIBLE);
+    }
     public static Button getmCheckAroundBtn() {
         return mCheckAroundBtn;
     }
-    public static RecyclerView getmRecyclerView() {
-        return mRecyclerView;
-    }
     public static CardView getmOptions() {
         return mOptions;
+    }
+    public static String getmSearchInput() {
+        return mSearchInput;
     }
 }

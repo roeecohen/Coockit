@@ -62,21 +62,12 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull HomeRecipesViewHolder holder, final int position, @NonNull Recipe model) {
+            protected void onBindViewHolder(@NonNull HomeRecipesViewHolder holder, final int position, @NonNull final Recipe model) {
                 holder.recipeName.setText(model.getName());
                 Picasso.get().load(model.getPicUrl()).into(holder.imgView);
                 setMemberInfo(model.getUser(),holder.profileImg,holder.memberName);
 
-                holder.imgView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Recipe recipe= (Recipe)adapter.getItem(position);
-
-                        Intent intent = new Intent(getContext(), SingleRecipeItem.class);
-                        intent.putExtra("rec_id", recipe.getId());
-                        startActivity(intent);
-                    }
-                });
+                FirebaseUtils.clickImgOpenRecipe(holder.imgView,getActivity(),getActivity().getApplicationContext(),model.getId());
             }
         };
         recyclerView.setAdapter(adapter);
@@ -86,7 +77,6 @@ public class HomeFragment extends Fragment {
 
     private void setMemberInfo(String email,final ImageView profileImg, final TextView memberName) {
         DatabaseReference databaseMemberRef = FirebaseDatabase.getInstance().getReference("Members");;
-
         Query query = databaseMemberRef.orderByChild("email").equalTo(email);
 
         query.addChildEventListener(new ChildEventListener() {
@@ -97,7 +87,6 @@ public class HomeFragment extends Fragment {
                 {
                     memberName.setText(member.getFullName());
                     Picasso.get().load(member.getImg()).into(profileImg);
-
                 }
             }
             @Override
