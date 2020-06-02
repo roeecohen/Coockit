@@ -1,5 +1,7 @@
 package com.example.coockit.Search;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,6 +65,7 @@ public class SearchFragment extends Fragment {
         mCheckAroundBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
             }
         });
