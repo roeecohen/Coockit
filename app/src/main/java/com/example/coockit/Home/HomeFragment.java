@@ -76,7 +76,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void setMemberInfo(String email,final ImageView profileImg, final TextView memberName) {
-        DatabaseReference databaseMemberRef = FirebaseDatabase.getInstance().getReference("Members");;
+        DatabaseReference databaseMemberRef = FirebaseDatabase.getInstance().getReference("Members");
         Query query = databaseMemberRef.orderByChild("email").equalTo(email);
 
         query.addChildEventListener(new ChildEventListener() {

@@ -39,12 +39,18 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.pm.PackageInfoCompat;
 
+import com.example.coockit.Search.IngredientsOptionsAdapter;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class SendMessage extends Context {
 
@@ -64,7 +70,14 @@ public class SendMessage extends Context {
         }
 
         String phoneNumber= "+9720587180749";
-        String smsMessage= "hello from cookIt";
+        String smsMessage= "Hello from cookIt!\n" +
+                "Do you have these missing ingredients so i can cook the recipe i found? \n";
+        ArrayList<String> ingredients= IngredientsOptionsAdapter.getmCheckBoxMarkedOptions();
+        smsMessage += ingredients+ "\n";
+        smsMessage += "Thank you! :) ";
+
+//        DatabaseReference databaseMemberRef = FirebaseDatabase.getInstance().getReference("Members");
+//        Query query = databaseMemberRef.orderByChild("phone");
 
         if (phoneNumber == null || phoneNumber.length() ==0||
                 smsMessage == null || smsMessage.length() ==0){
