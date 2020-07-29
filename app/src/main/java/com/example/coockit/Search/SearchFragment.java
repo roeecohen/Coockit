@@ -67,9 +67,8 @@ public class SearchFragment extends Fragment {
         mCheckAroundBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity main = (MainActivity) getActivity();
                 SendMessage sendMessage = new SendMessage();
-                sendMessage.onSend(v, mCheckAroundBtn ,main);
+                sendMessage.onSend(v, mCheckAroundBtn ,getActivity());
             }
         });
 
