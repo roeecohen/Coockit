@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.coockit.Main.MainActivity;
 import com.example.coockit.R;
 import com.example.coockit.SMS.SendMessage;
 import com.google.android.material.tabs.TabLayout;
@@ -66,8 +67,9 @@ public class SearchFragment extends Fragment {
         mCheckAroundBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MainActivity main = (MainActivity) getActivity();
                 SendMessage sendMessage = new SendMessage();
-                sendMessage.onSend(v, mCheckAroundBtn, getActivity());
+                sendMessage.onSend(v, mCheckAroundBtn ,main);
             }
         });
 

@@ -69,7 +69,7 @@ public class SendMessage extends Context {
                     new String[]{Manifest.permission.SEND_SMS}, SEND_SMS_PERMISSION_REQUEST_CODE);
         }
 
-        String phoneNumber= "+9720587180749";
+        String phoneNumber= "+9720544292133";
         String smsMessage= "Hello from cookIt!\n" +
                 "Do you have these missing ingredients so i can cook the recipe i found? \n";
         ArrayList<String> ingredients= IngredientsOptionsAdapter.getmCheckBoxMarkedOptions();
