@@ -198,8 +198,6 @@ public class InternetResults {
         return mCheckBoxOptions;
     }
 
-
-
     public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {
         public SearchAdapter() { }
 
