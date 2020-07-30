@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="60"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +30,7 @@
         <androidx.cardview.widget.CardView
             android:layout_weight="58"
             android:id="@+id/cardView2"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="299dp"
             app:cardCornerRadius="20dp"
             app:cardElevation="8dp"
@@ -78,15 +77,15 @@
         android:id="@+id/cardView3"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
         app:cardCornerRadius="25dp"
         app:cardElevation="0dp"
-        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintHorizontal_bias="0.078"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0" >
 
         <ImageView
             android:id="@+id/profile_img2"

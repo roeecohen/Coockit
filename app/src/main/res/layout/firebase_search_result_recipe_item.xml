@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="60"
         app:layout_constraintBottom_toTopOf="@+id/fire_result_rec_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -28,13 +27,11 @@
             android:text="Button"
             android:visibility="invisible" />
 
-
-
             <androidx.cardview.widget.CardView
                 android:layout_weight="58"
                 android:id="@+id/fire_result_cardView"
-                android:layout_width="match_parent"
-                android:layout_height="299dp"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="8dp"
                 app:cardUseCompatPadding="true"
@@ -69,10 +66,10 @@
         android:layout_marginBottom="20dp"
         android:text="Name"
         android:textColor="#484848"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintHorizontal_bias="0.069"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />

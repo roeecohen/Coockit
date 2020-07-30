@@ -86,7 +86,8 @@ public class HomeFragment extends Fragment {
                 if(member!=null)
                 {
                     memberName.setText(member.getFullName());
-                    Picasso.get().load(member.getImg()).into(profileImg);
+                    if(member.getImg()!=null&&!member.getImg().isEmpty())
+                        Picasso.get().load(member.getImg()).into(profileImg);
                 }
             }
             @Override

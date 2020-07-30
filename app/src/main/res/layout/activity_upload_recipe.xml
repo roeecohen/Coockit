@@ -1,44 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profile.UploadRecipe">
-
-    <Button
-        android:id="@+id/buttonUploadRec"
-        android:layout_width="match_parent"
-        android:layout_height="58dp"
-        android:background="@drawable/rounded_back_2_corners"
-        android:text="Upload recipe"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/ingredients"
-        android:layout_width="match_parent"
-        android:layout_height="149dp"
-        android:layout_marginTop="372dp"
-        android:background="@android:color/transparent"
-        android:gravity="top"
-        android:hint="Ingredients"
-        app:layout_constraintBottom_toTopOf="@+id/directions"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+    tools:context=".Profile.UploadRecipe"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/chooseImageView"
         android:layout_width="match_parent"
-        android:layout_height="283dp"
+        android:layout_height="131dp"
         android:clickable="true"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,36 +22,115 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/upload_image" />
 
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/transparent"
+            android:hint="Recipe name"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chooseImageView"
+            app:layout_constraintVertical_bias="0.016" />
 
-    <View
-        android:id="@+id/divider2"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+
+            android:text="Difficulty"
+            app:layout_constraintBottom_toTopOf="@+id/ingredients"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            app:layout_constraintVertical_bias="0.354" />
+
+        <EditText
+            android:id="@+id/difficulty"
+            android:layout_width="97dp"
+            android:layout_height="38dp"
+            android:ems="10"
+            android:inputType="numberSigned"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/ingredients"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Preparation time"
+            android:layout_marginLeft="30dp"
+
+            app:layout_constraintBottom_toTopOf="@+id/ingredients"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.107"
+            app:layout_constraintStart_toEndOf="@+id/difficulty"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            app:layout_constraintVertical_bias="0.354" />
+
+        <EditText
+            android:id="@+id/prep"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/ingredients"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/name"
+            app:layout_constraintVertical_bias="0.0" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/ingredients"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#8AC7C7C7"
-        android:visibility="visible"
+        android:layout_height="88dp"
+        android:layout_marginTop="50dp"
+        android:background="@android:color/transparent"
+        android:gravity="top"
+        android:hint="Ingredients"
         app:layout_constraintBottom_toTopOf="@+id/directions"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingredients" />
-
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:background="#8AC7C7C7"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/uploadProgress"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/directions"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#8AC7C7C7"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/directions"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ingredients" />
 
     <EditText
         android:id="@+id/directions"
         android:layout_width="match_parent"
-        android:layout_height="149dp"
-        android:layout_marginTop="576dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="20dp"
         android:background="@android:color/transparent"
         android:gravity="top"
         android:hint="Directions"
@@ -90,83 +141,48 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.326" />
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:gravity="top"
-        android:hint="Recipe name"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chooseImageView"
-        app:layout_constraintVertical_bias="0.016" />
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="409dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:background="#8AC7C7C7"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/uploadProgress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/directions"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <ProgressBar
-        android:id="@+id/uploadProgress"
-        style="?android:attr/progressBarStyleHorizontal"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonUploadRec"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="match_parent">
 
-        app:layout_constraintVertical_bias="0.904" />
+        <ProgressBar
+            android:id="@+id/uploadProgress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonUploadRec"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.946" />
 
-    <EditText
-        android:id="@+id/difficulty"
-        android:layout_width="53dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:inputType="numberSigned"
-        app:layout_constraintBottom_toTopOf="@+id/ingredients"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        app:layout_constraintVertical_bias="0.0" />
+        <Button
+            android:id="@+id/buttonUploadRec"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:background="@drawable/rounded_back_2_corners"
+            android:text="Upload recipe"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Difficulty"
-        app:layout_constraintBottom_toTopOf="@+id/ingredients"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        app:layout_constraintVertical_bias="0.354" />
-
-    <EditText
-        android:id="@+id/prep"
-        android:layout_width="53dp"
-        android:layout_height="40dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/ingredients"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Preparation time"
-        app:layout_constraintBottom_toTopOf="@+id/ingredients"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.107"
-        app:layout_constraintStart_toEndOf="@+id/difficulty"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        app:layout_constraintVertical_bias="0.354" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
