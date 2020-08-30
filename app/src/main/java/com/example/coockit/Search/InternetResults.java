@@ -37,6 +37,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * in this class we get all recipes that match the ingredients that the user inserted the app
+ * the recipes are from the website recipe puppy
+ */
+
 public class InternetResults {
 
     private static ArrayList<String> mTitles;

@@ -11,6 +11,9 @@ import androidx.annotation.NonNull;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+/**
+ * the buttons that the user can press to navigate inside the app (from different pages)
+ */
 public class bottomMenu extends AppCompatActivity {
     private TextView mTextMessage;
 

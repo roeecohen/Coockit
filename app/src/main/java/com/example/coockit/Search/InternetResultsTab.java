@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 
 import com.example.coockit.R;
 
+/**
+ * in the web results tab in the app all the recipes from the internet we be shown in the tab
+ */
 public class InternetResultsTab extends Fragment {
     private static RecyclerView mRecyclerView;
 

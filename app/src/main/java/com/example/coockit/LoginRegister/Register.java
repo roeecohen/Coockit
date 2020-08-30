@@ -30,6 +30,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ * register page
+ * if the user is not registers in DB, he need to- in this page
+ * password and email fields are necessary
+ */
 public class Register extends AppCompatActivity {
     private EditText mFullName, mEmail, mPhone,mPassword;
     private Button mRegisterBtn;

@@ -29,6 +29,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * this class is the search page in app
+ * in this page the user insert the ingredients that he wants and the app will give him results from
+ * DB and from web search
+ */
 public class SearchFragment extends Fragment {
 
     private View mView;

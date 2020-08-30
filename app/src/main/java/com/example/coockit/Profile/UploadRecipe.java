@@ -31,6 +31,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
+/**
+ * the page that the user sees when he wants to upload a recipe
+ * all fields must be not empty
+ */
 public class UploadRecipe extends AppCompatActivity {
 
     private EditText recipeName;

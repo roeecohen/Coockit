@@ -24,6 +24,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
+/**
+ * here the user can see (from his profile page) all the recipes that he uploaded
+ */
 public class ProfileRecipes extends AppCompatActivity {
     private DatabaseReference databaseRef;
     private Query query ;

@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * when the user wants to search for recipe in the search field all ingredients options will be shown
- * to user. also if the user starts to write a word, the suitable options will be shown
+ * to user. also if the user starts to write a word, the suitable options will be shown.
  */
 public class IngredientsOptionsAdapter extends RecyclerView.Adapter<IngredientsOptionsAdapter.IngOptionsViewHolder> {
 

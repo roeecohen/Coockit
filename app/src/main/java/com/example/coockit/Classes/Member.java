@@ -2,6 +2,10 @@ package com.example.coockit.Classes;
 
 import java.util.UUID;
 
+/**
+ * every user that is signing in the app will be saved here as a member and then in DB
+ */
+
 public class Member {
     private String id;
     private String fullName;

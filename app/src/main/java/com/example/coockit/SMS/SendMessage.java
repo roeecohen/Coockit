@@ -29,6 +29,7 @@ import android.os.UserHandle;
 import android.telephony.SmsManager;
 import android.view.Display;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -40,9 +41,13 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.pm.PackageInfoCompat;
 
 import com.example.coockit.Search.IngredientsOptionsAdapter;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -52,6 +57,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+/**
+ * when the user press the "check around" button, we get to this class.
+ * this class will send SMS to all users in DB.
+ * in the future we want to add GPS and send SMS only to users in the user surrounding.
+ * the phone number needs to be saved with national prefix. for example, in Israel +972
+ */
+
 public class SendMessage extends Context {
 
     final int SEND_SMS_PERMISSION_REQUEST_CODE =0;
@@ -60,6 +72,14 @@ public class SendMessage extends Context {
     EditText message;
     Button send;
 
+    /**
+     * when the user pressed the check around button,we get to this function
+     * here we check if the user gave permission to his sms, and if not- the app will ask for
+     * permission again
+     * @param v the view
+     * @param sendButton the button that was pressed
+     * @param act the activity
+     */
     public void onSend (View v, Button sendButton, Activity act){
         sendButton.setEnabled(false);
         if(checkPermission(Manifest.permission.SEND_SMS, act)){
@@ -69,34 +89,111 @@ public class SendMessage extends Context {
                     new String[]{Manifest.permission.SEND_SMS}, SEND_SMS_PERMISSION_REQUEST_CODE);
         }
 
-        String phoneNumber= "+9720544292133";
-        String smsMessage= "Hello from cookIt!\n" +
-                "Do you have these missing ingredients so i can cook the recipe i found? \n";
-        ArrayList<String> ingredients= IngredientsOptionsAdapter.getmCheckBoxMarkedOptions();
-        smsMessage += ingredients+ "\n";
-        smsMessage += "Thank you! :) ";
+       // ArrayList<String> phoneNumList= allPhoneNumbers();
 
-//        DatabaseReference databaseMemberRef = FirebaseDatabase.getInstance().getReference("Members");
-//        Query query = databaseMemberRef.orderByChild("phone");
+        final ArrayList<String> phoneList= new ArrayList<>() ;
+        final ArrayAdapter adapter= new ArrayAdapter (this,0,phoneList);
+        DatabaseReference databaseMemberRef = FirebaseDatabase.getInstance().getReference("Members");//.child("Members");
+//        databaseMemberRef.addChildEventListener(new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+//                    Info info= snapshot.getValue(Info.class);
+//                    phoneList.add(info.getPhone());
+//                    System.out.printf(info.getPhone());
+//                }
+//            }
+//
+//            @Override
+//            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//            }
+//
+//            @Override
+//            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//        databaseMemberRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+//                    //Info info= new Info();
+//                    //info.setPhone(snapshot.child(userID).getValue(Info.class).getPhone());
+//                    Info info= snapshot.getValue(Info.class);
+//
+//                    //String phone= dataSnapshot.child("phone").getValue().toString();
+//                    phoneList.add(info.getPhone());
+//                    System.out.printf("phone number :"+info.getPhone());
+//
+//                }
+//                //String phone= dataSnapshot.child("phone").getValue().toString();
+//                adapter.notifyDataSetChanged();
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//            }
+//        });
 
-        if (phoneNumber == null || phoneNumber.length() ==0||
-                smsMessage == null || smsMessage.length() ==0){
-            return;
-        }
+        //for (String phoneNumber : phoneList) {
+        String phoneNumber= "+972544292133";
+            String smsMessage = "Hello from cookIt!\n" +
+                    "Do you have these missing ingredients so i can cook the recipe i found? \n";
+            ArrayList<String> ingredients = IngredientsOptionsAdapter.getmCheckBoxMarkedOptions();
+            smsMessage += ingredients + "\n";
+            smsMessage += "Thank you! :) ";
 
-        if(checkPermission(Manifest.permission.SEND_SMS, act)){
-          try {
-              SmsManager smsManager = SmsManager.getDefault();
-              smsManager.sendTextMessage(phoneNumber, null, smsMessage, null,
-                      null);
-              Toast.makeText(act, "Message send", Toast.LENGTH_SHORT).show();
-          }catch (Exception e){
-              System.out.println("message failed");
-              System.out.println(e.getMessage());
-          }
-        }else {
-            Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
-        }
+            if (phoneNumber == null || phoneNumber.length() == 0 ||
+                    smsMessage == null || smsMessage.length() == 0) {
+                return;
+            }
+
+            if (checkPermission(Manifest.permission.SEND_SMS, act)) {
+                try {
+                    SmsManager smsManager = SmsManager.getDefault();
+                    smsManager.sendTextMessage(phoneNumber, null, smsMessage, null,
+                            null);
+                    Toast.makeText(act, "Message send", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    System.out.println("message failed");
+                    System.out.println(e.getMessage());
+                }
+            } else {
+                Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
+            }
+        //}
+    }
+
+    private ArrayList<String> allPhoneNumbers(){
+        final ArrayList<String> phoneList= new ArrayList<>() ;
+        DatabaseReference databaseMemberRef = FirebaseDatabase.getInstance().getReference().child("Members");
+        databaseMemberRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                phoneList.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Info info= snapshot.getValue(Info.class);
+                    //String phone= dataSnapshot.child("phone").getValue().toString();
+                    phoneList.add(info.getPhone());
+                }
+                //String phone= dataSnapshot.child("phone").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+        return phoneList;
     }
 
     public boolean checkPermission (String permission, Activity act){

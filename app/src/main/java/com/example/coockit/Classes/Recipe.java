@@ -1,6 +1,10 @@
 package com.example.coockit.Classes;
 import java.util.UUID;
 
+/**
+ * every recipe that user is uploading and every recipe from the internet will be saved here.
+ * the recipes from users are saved in DB
+ */
 public class Recipe {
 
     private String id;

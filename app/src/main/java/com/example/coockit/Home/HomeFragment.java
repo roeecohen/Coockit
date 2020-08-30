@@ -30,6 +30,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
+/**
+ * the home screen- the screen the user sees when he enters the app
+ * in this screen the user sees all images from recipes that members uploaded and are saved in DB
+ * when the user press an img, the recipe is shown
+ */
 public class HomeFragment extends Fragment {
     private DatabaseReference databaseRef;
     private RecyclerView recyclerView;

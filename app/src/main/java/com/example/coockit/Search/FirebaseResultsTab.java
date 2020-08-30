@@ -28,6 +28,10 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * results from DB
+ * the user insert ingredients and in this class we get all the results according to his search
+ */
 public class FirebaseResultsTab extends Fragment {
     private DatabaseReference databaseRef;
     private RecyclerView recyclerView;

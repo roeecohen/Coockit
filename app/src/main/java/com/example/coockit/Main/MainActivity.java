@@ -21,6 +21,11 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
 
+/**
+ * main activity
+ * this class is navigating to the first page the user sees
+ * if he is signed in- then to home page, if not- to login
+ */
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

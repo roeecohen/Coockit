@@ -42,7 +42,11 @@ import com.squareup.picasso.Picasso;
 
 import static android.app.Activity.RESULT_OK;
 
-
+/**
+ * profile page
+ * each user has its own profile page with its own details
+ * in this page the user can upload a recipe that is saved under his username
+ */
 public class ProfileFragment extends Fragment {
     private ImageView imgView;
     private TextView name;

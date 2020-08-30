@@ -19,6 +19,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
+/**
+ * here we save all data for each recipe and its saved in DB
+ */
 
 public class SingleRecipeItem extends AppCompatActivity {
     private DatabaseReference database;
